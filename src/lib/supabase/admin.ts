@@ -9,8 +9,15 @@ import { createClient as createSupabaseClient } from '@supabase/supabase-js';
  * or migration/seed scripts. NEVER import or execute this module in client components.
  */
 export function createAdminClient() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+  const supabaseUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    process.env.CIVOARA_SUPABASE_URL ||
+    'https://udorjqovbxehugwiqbxt.supabase.co';
+  const serviceRoleKey =
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.CIVOARA_SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.CIVOARA_SUPABASE_SECRET_KEY ||
+    '';
 
   if (!serviceRoleKey) {
     console.warn(
